@@ -1,0 +1,40 @@
+cp ./Germany/Bayern-Munich/Toni-Kroos.player ../My_Players/
+
+///////////////////////////////////////////
+Trier par LEVEL et ensuite par VALUE
+echo "" > theFichier.txt;
+echo "" > final.txt;
+
+for i in `seq 80 100`;
+do
+        find . -type f -exec grep -iH -1 "LEVEL=$i" {} \; >> theFichier.txt;
+done
+
+sort +1rn -t\= theFichier.txt -o final.txt;
+
+cat theFichier.txt;
+
+grep -ri "forward" Players/
+
+find . -type f -exec grep -iH "forward" {} \;
+
+
+find . -type f -print -exec grep -iH "forward" {} \;
+
+/////////////////////////////////////////
+installer database en ligne de commande
+(utiliser filezilla pour mettre sur serveur le .sql)
+mysql> use test;
+Database changed
+mysql> select database();
+
+mysql -u root -p jeremy < CHEMINDATABASE
+
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-debian
+
+
+
+
+
+
+

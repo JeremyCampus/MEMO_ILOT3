@@ -1,0 +1,45 @@
+___________________________________________________________________________
+TOUJOUR UTILISER LES FOREACH POUR AFFICHER BDD 
+___________________________________________________________________________
+
+INSTALLER LARAVEL :
+----------------------------------------
+composer global require "laravel/installer"
+laravel new monLaravel
+cd monLaravel
+php artisan serve
+----------------------------------------
+
+IMPORTANT
+----------------------------------------
+composer install 
+cp .env.example .env
+php artisan key:generate
+----------------------------------------
+
+INSTALLER DEBUGBAR
+----------------------------------------
+composer require barryvdh/laravel-debugbar --dev
+----------------------------------------
+
+___________________________________________________________________________
+page about.blade.php :
+-----------------------------------------
+@extends("app")     
+
+
+@section('content')
+blablabla
+@endsection
+-----------------------------------------
+@yield('content')
+
+//dans le fichier app.blade.php, le contenu de section('content') apparaitra lors d'un @yield('content')
+___________________________________________________________________________
+FICHIERS IMPORTANTS
+----------------------------------------
+ressources/views
+routes/web.php
+app/Http/Controller
+----------------------------------------
+

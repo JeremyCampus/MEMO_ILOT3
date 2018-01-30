@@ -1,0 +1,25 @@
+Créer le sous domaine directement chez l'ébergeur (ex : Gandi, OVH, etc...)
+
+Créer le dossier cible (var/www/jeremy)
+
+etc/apache2/sites-available/jeremy.conf : 
+<VirtualHost *:80>
+
+ServerName jeremy.happycoffee.pro
+
+DocumentRoot /var/www/jeremy/public
+
+</VirtualHost>
+
+
+
+Bash :
+a2ensite //(apache 2 enable site)
+service apache2 restart
+
+__________________________________________________
+happycoffee.com
+
+TLD = .com
+SLD = happycoffee
+Subdomaine = www 

@@ -1,0 +1,98 @@
+o Liste des boissons
+SELECT `boisson`.`libelle`
+FROM `boisson`
+
+o Liste des ingrédients en manque (dont la quantité est nulle)
+SELECT `ingredient`.`nom`, `ingredient`.`qteStock`
+FROM `ingredient`
+WHERE ( `qteStock` = NULL)
+
+o Liste des boissons dont le libellé contient le mot « café »
+SELECT `boisson`.`libelle`
+FROM `ingredient` , `boisson`
+WHERE ( `libelle` = Café)
+
+o Liste des boissons dont le prix est entre 0.40 et 0.70 euros
+SELECT `boisson`.`libelle`
+FROM `ingredient` , `boisson`
+WHERE (( `prix` >= 40) AND ( `prix` <= 70))
+
+o Liste des ventes d’aujourd’hui classées par n° décroissant
+SELECT `vente`.`idV`
+FROM `vente`
+WHERE ( `date` = NOW())
+ORDER BY `idV` DESC
+
+o Liste des ingrédients (nom et qte nécesssaire) d’une boisson donnée
+--------------------------------------------------------------------
+SELECT `nom`, `qteStock`
+FROM `ingredient`
+JOIN `recette` ON `ingredient`.`id` = `recette`.`ig.id` 
+WHERE `bCode` = (
+	SELECT `boisson`.`code`
+	FROM `boisson`
+	WHERE ( `libelle` = 'Café Long')
+  )
+
+		--------OU-------
+
+SELECT `ingredient`.`nom`, `ingredient`.`qteStock`
+FROM `ingredient`, `boisson`, `recette`
+WHERE `ingredient`.`id` = `recette`.`ig.id` AND `boisson`.`code` = `recette`.`bCode` AND `boisson`.`libelle` = 'Chocolat Intense'
+--------------------------------------------------------------------
+o Liste des boissons disponibles (pour lesquelles les ingrédients sont dispo)
+SELECT `boisson`.`libelle`, MIN(`ingredient`.`qteStock`>=`recette`.`ig.id`) AS dispo
+FROM `boisson`, `ingredient`,`recette`
+WHERE `ingredient`.`id` = `recette`.`ig.id` AND `boisson`.`code` = `recette`.`bCode` 
+GROUP BY `boisson`.`libelle`
+HAVING  MIN(`ingredient`.`qteStock`>=`recette`.`ig.id`)
+
+o Liste des boissons vendues aujourd’hui
+SELECT `vente`.`date` 
+FROM `vente`
+WHERE DATE(`vente`.`date`) LIKE DATE(NOW())
+
+o Prix de la derniere boisson vendue
+SELECT `vente`.`idv` 
+FROM `vente`
+WHERE DATE(`vente`.`date`)
+LIMIT 1
+
+
+o Nombre de ventes de la boisson « CaféLong »
+SELECT COUNT(*)
+FROM `vente`, `boisson`
+WHERE `boisson`.`libelle`='Café Long' AND `boisson`.`code`=`vente`.`b.Code`
+
+o Rajouter la boisson « Café au lait »
+INSERT INTO `boisson` VALUES ('cal', 'Café au lait', 120)
+
+o Rajouter 100 à la quantité en stock de l’ingrédient « sucre »
+UPDATE `ingredient` SET `qteStock`=`qteStock`+ 100 WHERE `ingredient`.`nom`='Sucre'
+
+o Augmenter de 0.10 euros le prix de toutes les boissons
+UPDATE boisson SET prix= prix +10
+
+o Créer une nouvelle vente d’expresso avec 2 sucres
+INSERT INTO vente VALUES (4,6,"cap",NOW(),2)
+
+o Supprimer cette vente
+DELETE FROM vente ORDER BY date DESC LIMIT 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

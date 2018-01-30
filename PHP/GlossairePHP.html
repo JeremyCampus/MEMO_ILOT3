@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captain Harlock</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="glossaire-php">Glossaire PHP</h1>
+<hr>
+
+
+
+
+
+<table>
+  <thead>
+  <tr>
+  <th>Notions SQL (ou BDD en général)</th>
+  <th>Définition</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><strong>Banque de données</strong></td>
+  <td>Collection de bases de données</td>
+  </tr>
+  <tr>
+  <td><strong>Base de données</strong></td>
+  <td>Collection de tables de données</td>
+  </tr>
+  <tr>
+  <td><strong>Table</strong></td>
+  <td>Collection de lignes d’enregistrement</td>
+  </tr>
+  <tr>
+  <td><strong>Ligne d’enregistrement</strong></td>
+  <td>Collection de données associées (exemple dans une table “client”, une ligne peut contenir nom, prénom et adresse du client, dans des “cases” correspondantes)</td>
+  </tr>
+  <tr>
+  <td><strong>SGBD</strong></td>
+  <td>Système de Gestion de Base de Données</td>
+  </tr>
+  <tr>
+  <td><strong>Moteur SQL</strong></td>
+  <td>Programme qui manipule les fichiers de la BDD, et retranscrit les informations stockées de manière “lisible”</td>
+  </tr>
+  <tr>
+  <td><strong>Catalogue</strong></td>
+  <td>Description de la BDD ++ informations “subsidiaires” (typiquement les droits d’accès à la base de données)</td>
+  </tr>
+  <tr>
+  <td><strong>Requête</strong></td>
+  <td>Demande envoyée à la BDD, qui va renvoyer</td>
+  </tr>
+  <tr>
+  <td><strong>Langage de requête</strong></td>
+  <td>Langage informatique dans lequel sera codé les requêtes envoyés au SGBD</td>
+  </tr>
+  <tr>
+  <td><strong>Processeur de requête</strong></td>
+  <td>Programme d’interprétation de la requête</td>
+  </tr>
+  <tr>
+  <td><strong>Plan d’éxécution</strong></td>
+  <td>Liste des opérations à réaliser sur la BDD. pour une requête écrite dans le langage de requête, le processeur de requête détermine un plan d’éxécution. Après avoir vérifier que toutes les opérations nécessaires au plan d’éxécution sont autorisées à l’utilisateur (vérification dans le catalogue), le plan est envoyé au moteur SQL, qui renvoie le résultat de la requête</td>
+  </tr>
+  <tr>
+  <td>–</td>
+  <td>–</td>
+  </tr>
+  <tr>
+  <td><strong>Langage de définition de données (LDD/DDL)</strong></td>
+  <td>Architecture de la BDD</td>
+  </tr>
+  <tr>
+  <td><strong>CREATE</strong></td>
+  <td>mot-clé pour créer un élément (<strong>DATABASE</strong>,<strong>TABLE</strong>,<strong>VIEW</strong>, <strong>INDEX</strong>)</td>
+  </tr>
+  <tr>
+  <td><strong>ALTER</strong></td>
+  <td>mot-clé pour modifier (altérer) un élément</td>
+  </tr>
+  <tr>
+  <td><strong>DROP</strong></td>
+  <td>mot-clé pour supprimer un élément</td>
+  </tr>
+  <tr>
+  <td><strong>Collation</strong></td>
+  <td>Table de conversion des caractères spéciaux, par exemple pour les tris</td>
+  </tr>
+  <tr>
+  <td><strong>COLLATE</strong></td>
+  <td>mot-clé définissant la collation à utiliser pour la table. ex. <strong>COLLATE utf8_general_ci;</strong></td>
+  </tr>
+  <tr>
+  <td>--------------------</td>
+  <td>-------------------</td>
+  </tr>
+  <tr>
+  <td><strong>Langage de manipulation de données (LMD/DML)</strong></td>
+  <td>Requête, tri, filtre etc</td>
+  </tr>
+  <tr>
+  <td>–</td>
+  <td>–</td>
+  </tr>
+  <tr>
+  <td><strong>INSERT</strong></td>
+  <td>Insertion (création) de données dans une table</td>
+  </tr>
+  <tr>
+  <td><strong>SELECT</strong></td>
+  <td>Sélection (lecture) de données dans une table</td>
+  </tr>
+  <tr>
+  <td><strong>UPDATE</strong></td>
+  <td>Mise à jour (réécriture) de données dans une table</td>
+  </tr>
+  <tr>
+  <td><strong>DELETE</strong></td>
+  <td>Suppression de données dans une table</td>
+  </tr>
+  <tr>
+  <td>-------------------</td>
+  <td>--------------------------</td>
+  </tr>
+  <tr>
+  <td><strong>Langage de contrôle de données (LCD)</strong></td>
+  <td>Vérification des droits</td>
+  </tr>
+  <tr>
+  <td>---------------</td>
+  <td>---------------------------</td>
+  </tr>
+  <tr>
+  <td><strong>Langage de contrôle des transactions(LCT/TCL)</strong></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td>----------------------------</td>
+  <td>---------------------</td>
+  </tr>
+  </tbody>
+  </table><p>/!\ Les colonnes en SQL sont typées et dépendent du SGBD/!\</p>
+  
+
+
+<table>
+<thead>
+<tr>
+<th>Fonction PHP</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>date</strong>(string $format, [int $timestamp])</td>
+<td>Renvoie une string de la date $timestamp (par défaut la date actuelle) reformatée selon les règles dans $format</td>
+</tr>
+<tr>
+<td><strong>getdate</strong>([int $timestamp])</td>
+<td>Renvoie un tableau associatif (clés =&gt; valeurs) contenant les informations de $timestamp (par défaut la date actuelle)</td>
+</tr>
+<tr>
+<td><strong>time</strong>(void)</td>
+<td>Renvoie le timestamp actuel</td>
+</tr>
+<tr>
+<td><strong>trim</strong>($string [, $character_mask])</td>
+<td>supprime de $string les caractères de la chaine $character_mask, par défaut les espaces</td>
+</tr>
+<tr>
+<td><strong>ltrim</strong>($string [, $character_mask])</td>
+<td>même comportement que trim() appliqué uniquement au début de la $string (left trim)</td>
+</tr>
+<tr>
+<td><strong>rtrim</strong>($string [, $character_mask])</td>
+<td>même comportement que trim() appliqué uniquement à la fin de la $string (right trim)</td>
+</tr>
+<tr>
+<td><strong>strlen</strong>($string)</td>
+<td>renvoie la longueur de la $string</td>
+</tr>
+<tr>
+<td><strong>strtoupper</strong>($string)</td>
+<td>renvoie la conversion en majuscules de la $string</td>
+</tr>
+<tr>
+<td><strong>ucfirst</strong>($string)</td>
+<td>met en majuscule le premier caractère de la $string et renvoie la chaîne créée</td>
+</tr>
+<tr>
+<td><strong>substr</strong>($string, int $start [, int $length])</td>
+<td>renvoie le segment de $string à partir $start de longueur $length (par défaut jusqu’à la fin de $string). Si $start est négatif, le segment commencera à compter à partir de la fin</td>
+</tr>
+<tr>
+<td><strong>strpos</strong>($string, $toFind [, $offset])</td>
+<td>Renvoie la position de l’élément $toFind dans $string. $offset permet de définir à partir d’où $string sera parcouru</td>
+</tr>
+<tr>
+<td><strong>explode</strong>($separateur, $string [, $limit])</td>
+<td>revoie le tableau des sous-chaînes de $string, séparée par $separateur. Si $limit est défini, renvoie $limit éléments, le dernier étant le reste de la chaîne</td>
+</tr>
+<tr>
+<td><strong>hmlspecialchars</strong>($string)</td>
+<td>convertit les caractères spéciaux dde $string en entités HTML</td>
+</tr>
+<tr>
+<td><strong>urlencode</strong>($string)</td>
+<td>renvoie une version encodée de $string insérable dans une URL (plus d’espace, etc)</td>
+</tr>
+<tr>
+<td><strong>isset</strong>($var[,$var2 …])</td>
+<td>renvoie TRUE si toutes les variables passées en paramètres sont définies et différentes de NULL</td>
+</tr>
+<tr>
+<td><strong>empty</strong>($var)</td>
+<td>renvoie FALSE si $var est définie et non vide</td>
+</tr>
+<tr>
+<td><strong>$_GET</strong></td>
+<td>Tableau associatif (clé =&gt; valeur) passé par l’URL (méthode GET). exemple:</td>
+</tr>
+<tr>
+<td><code>echo htmlspecialchars($_GET["name"]);</code></td>
+<td>renvoie <code>Geraud</code> si l’URL était <code>http://example.com/?name=Geraud</code></td>
+</tr>
+<tr>
+<td><strong>$_POST</strong></td>
+<td>Tableau associatif passé au script par la méthode POST (voir <strong>$_GET</strong>)</td>
+</tr>
+<tr>
+<td><strong>$_REQUEST</strong></td>
+<td>Un tableau associatif qui contient par défaut le contenu des variables $_GET, $_POST et $_COOKIE.</td>
+</tr>
+<tr>
+<td><strong>$_SERVER</strong></td>
+<td>Tableau associatif des informations du serveur <strong>(à préciser)</strong></td>
+</tr>
+<tr>
+<td><strong>$_SESSION</strong></td>
+<td>Tableau associatif des valeurs stockées dans la session. La session s’ouvre dès l’entrée sur le site du visiteur, et se ferme dès sa sortie, au bout d’un temps d’inactivité (timeout) ou la déconnexion via session_destroy(). $_SESSION nécessite l’appel de la fonction <strong>start_session</strong>() <strong>AVANT TOUT CODE HTML ET SUR CHAQUE PAGE L’UTILISANT</strong> pour pouvoir être utilisé</td>
+</tr>
+<tr>
+<td><strong>$_COOKIE</strong></td>
+<td>Un tableau associatif de variables, passé au script courant, via des cookies HTTP.</td>
+</tr>
+<tr>
+<td><strong>include</strong>($string)</td>
+<td>Inclut au script actuel le fichier spécifié par le chemin $string. (exemple un autre script php)</td>
+</tr>
+<tr>
+<td><strong>require</strong>($string)</td>
+<td>Comportement analogue à include() mais renvoie une erreur fatale (et donc arrête le script) si l’inclusion renvoie une erreur (include n’émet qu’une alerte <strong>E_WARNING</strong> le cas échéant</td>
+</tr>
+<tr>
+<td><strong>include_once</strong>($string)</td>
+<td>idem include(), mais si le fichier a déjà été inclus, ne le réinclut pas et renvoie TRUE</td>
+</tr>
+<tr>
+<td><strong>require_once</strong>($string)</td>
+<td>idem include_once(), pour require()</td>
+</tr>
+<tr>
+<td><strong>key_exists</strong>($key, $array)</td>
+<td>alias de <strong>array_key_exists</strong>(), vérifie si la clé $key existe dnas $array. renvoie le booléen TRUE si vrai, FALSE sinon</td>
+</tr>
+<tr>
+<td><strong>in_array</strong>($toFind, $array)</td>
+<td>renvoie TRUE si $toFind est dans $array, FALSE sinon</td>
+</tr>
+<tr>
+<td><strong>array_search</strong>($toFind, $array)</td>
+<td>renvoie la clé associé à $toFind s’il se trouve dans $array, FALSE sinon</td>
+</tr>
+<tr>
+<td><strong>array_keys</strong>($array [,$search_value])</td>
+<td>renvoie un tableau des clés de $array. Si $search_value est spécifié, ne renvoie que les clés contenant la valeur de $search_value</td>
+</tr>
+<tr>
+<td><strong>array_values</strong>($array)</td>
+<td>renvoie toutes les valeurs d’un tableau associatif indexé de façon numérique</td>
+</tr>
+<tr>
+<td><strong>is_array</strong>($var)</td>
+<td>renvoie TRUE si $var est un tableau, FALSE sinon</td>
+</tr>
+<tr>
+<td><strong>sort</strong>($array)</td>
+<td>trie le tableau $array dans l’ordre croissant <strong>(à préciser)</strong></td>
+</tr>
+<tr>
+<td><strong>ksort</strong>($array)</td>
+<td>trie le tableau $array suivant ses clés</td>
+</tr>
+<tr>
+<td><strong>asort</strong>($array)</td>
+<td>trie le tableau $array en conservant l’association clé =&gt; valeur</td>
+</tr>
+<tr>
+<td><strong>each</strong>($array)</td>
+<td>renvoie chaque paire clé/valeur d’un tableau</td>
+</tr>
+<tr>
+<td><strong>print_r</strong>($var)</td>
+<td>Affiche des informations lisibles pour une variable</td>
+</tr>
+</tbody>
+</table><h1 id="glossaire-sql">Glossaire SQL</h1>
+<hr>
+
+<table>
+<thead>
+<tr>
+<th>Notions SQL</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TINYINT</strong></td>
+<td>Entier encodé sur 1 octet (0-255 non signé ou -128-127 signé)</td>
+</tr>
+<tr>
+<td><strong>SMALLINT</strong></td>
+<td>Entier encodé sur 2 octet (0-2^16 non signé ou -2<sup>15-2</sup>15-1 signé)</td>
+</tr>
+<tr>
+<td><strong>MEDIUMINT</strong></td>
+<td>Entier encodé sur 3 octet (0-2^24 non signé ou 2<sup>23-2</sup>23-1 signé)</td>
+</tr>
+<tr>
+<td><strong>INT</strong></td>
+<td>Entier encodé sur 4 octet (0-2^32 non signé ou -2<sup>31-2</sup>31-1 signé)</td>
+</tr>
+<tr>
+<td><strong>BIGINT</strong></td>
+<td>Entier encodé sur 8 octet (0-2^64 non signé ou -2<sup>63-2</sup>63-1 signé)</td>
+</tr>
+<tr>
+<td>---------------------------</td>
+<td>---------------------</td>
+</tr>
+<tr>
+<td><strong>DECIMAL</strong>/<strong>NUMERIC</strong>(p,s)</td>
+<td>définition d’une variable réelle de précision (nombre de chiffres) p et de scale (nombre de chiffres après la virgule) s. max p = 65, max s = 30</td>
+</tr>
+<tr>
+<td><strong>FLOAT</strong></td>
+<td>Nombre à virgule flottante, de scale 23</td>
+</tr>
+<tr>
+<td><strong>DOUBLE</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table><p><img src="/pictures/architectureSite.png" alt="Schéma de l'architecture d'un site" title="Schéma d'architecture d'un site Web">
+<img src="/pictures/schemeMySQL.png" alt="Schéma de fonctionnement de mySQL" title="Schéma de fonctionnement de mySQL"></p>
+</div>
+</body>
+
+</html>

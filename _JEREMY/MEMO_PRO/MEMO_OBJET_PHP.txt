@@ -1,0 +1,22 @@
+        class Person {
+          public $isAlive = true;
+          
+          function __construct($name) {
+              $this->name = $name;
+          }
+          
+          public function dance() {
+            return "Je danse !";
+          }
+        }
+        
+        $me = new Person("Marc");
+        if (is_a($me, "Person")) {
+          echo "Je suis une personne, ";
+        }
+        if (property_exists($me, "name")) {
+          echo "J'ai un nom, ";
+        }
+        if (method_exists($me, "dance")) {
+          echo "et je sais comment danser !";
+        }
