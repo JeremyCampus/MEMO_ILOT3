@@ -1,0 +1,4 @@
+docker run -ti debian:jessie bash
+docker pull php
+docker pull mysql
+docker pull composer    
