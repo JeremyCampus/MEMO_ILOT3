@@ -1,0 +1,6 @@
+Le module mod_rewrite est déjà "pré-installé" avec Apache sous Ubuntu. Vérifier si c'est le cas : 
+ ls -l /usr/lib/apache2/modules/
+
+
+Ensuite, la commande suivante crée un lien logique entre ce module et les fichiers de modules que comprend votre serveur Apache (ils sont placés dans le dossier /etc/apache2/mods-available/) : 
+ a2enmod rewrite
