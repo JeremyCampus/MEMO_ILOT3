@@ -1,7 +1,7 @@
-﻿# Création d'un Virtual Host
+﻿
+# Création d'un Virtual Host
 ### Définition :
-en informatique le Virtual Host est une méthode que les serveurs tel que les serveur web utilise pour accueillir plus d'un nom de domaine sur le même ordinateur, parfois sur la même adresse IP tout en maintenant une gestion séparée de chacun de ces nom de domaine.
-ure de Création du Virtual Host
+En informatique le Virtual Host est une méthode que les serveurs tel que les serveurs web utilise pour accueillir plus d'un nom de domaine sur le même ordinateur, parfois sur la même adresse IP tout en maintenant une gestion séparée de chacun de ces nom de domaine.
 
 ### Création par étapes :
 

@@ -10,17 +10,21 @@ cd monLaravel
 php artisan serve
 ----------------------------------------
 
-IMPORTANT
+IMPORTANT (A REFAIRE DANS LE SERVEUR !!!!!!!!!!!!!!)
 ----------------------------------------
 composer install 
 cp .env.example .env
 php artisan key:generate
+/var/log/apache2# tail -f error.log
+chmod o+rwx -R storage/
 ----------------------------------------
 
 INSTALLER DEBUGBAR
 ----------------------------------------
 composer require barryvdh/laravel-debugbar --dev
 ----------------------------------------
+
+
 
 ___________________________________________________________________________
 page about.blade.php :

@@ -1,3 +1,42 @@
+Getters & Setters :
+On peut créer des méthodes/fonctions pour définir et récupérer les valeurs des attributs d'une classe.
+
+Cela permet de contrôler les valeurs qui sont affectées aux attributs (setters) et de mettre en forme la valeur d'un attribut avant de la retourner (getters).
+
+En combinaison avec la visibilité private sur les attributs, on empêche d'affecter directement une valeur à un attribut, et on oblige à utiliser les setters.
+
+
+__________________________
+Instanciation
+Une classe définit une structure (caractéristiques, comportement), qu'on utilise ensuite pour créer des objets. On parle alors d'"instance de classe", chaque objet
+créé est une instance de la classe qui le décrit.
+
+__________________________
+Attributs / propriétés
+Les attributs/propriétés/caractéristiques d'un objet sont décrits dans une classe sous forme de variables.
+
+Si on ne définit pas de visibilité, il faut au moins utiliser le mot clé "var" pour éviter une syntaxe error. Par défaut, les attributs ont une visibilité 
+public (c.f. Visibilité).
+
+__________________________
+Héritage
+L'héritage est un principe de la POO qui permet d'étendre les caractéristiques/méthodes d'une classe parente dans une classe enfant. La classe enfant peut ainsi
+ bénéficier de tous les comportements de la classe héritée, tout en redéfinissant ses comportements spécifiques. On parle de relation mère/fille ou parent/enfant.
+
+Par exemple, lorsque vous étendez une classe, la classe fille hérite de tous les attributs et méthodes publiques et protégées de la classe parente. Tant que la 
+classe fille n'écrase pas ces méthodes, elles conservent leur fonctionnalité d'origine.
+
+L'héritage est très utile pour définir certaines fonctionnalités communes à plusieurs classes, tout en permettant l'ajout de fonctionnalités supplémentaires dans 
+les classes enfants, sans avoir à réimplémenter toutes les fonctionnalités communes
+
+__________________________
+Surcharge 
+Permet de choisir entre différentes versions d'une même fonction ou méthode selon le nombre et le type des arguments fournis.
+
+__________________________
+
+
+
         class Person {
           public $isAlive = true;
           
