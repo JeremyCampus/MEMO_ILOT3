@@ -15,8 +15,12 @@ IMPORTANT (A REFAIRE DANS LE SERVEUR !!!!!!!!!!!!!!)
 composer install 
 cp .env.example .env
 php artisan key:generate
-/var/log/apache2# tail -f error.log
 chmod o+rwx -R storage/
+
+
+(SI BESOIN)
+php artisan migrate
+/var/log/apache2# tail -f error.log
 ----------------------------------------
 
 INSTALLER DEBUGBAR
