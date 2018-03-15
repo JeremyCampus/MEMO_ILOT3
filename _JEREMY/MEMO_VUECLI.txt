@@ -1,0 +1,3 @@
+cd monProjet
+npm install
+npm run dev

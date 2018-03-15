@@ -4,9 +4,6 @@ git commit -m "first commit"
 git remote add origin https://github.com/JeremyCampus/coffeeMachine.git
 git push -u origin master
 
-
-
-
 Démarche :
 git init <------ Définir repertoire actuel comme 'master', comme référence.
 git remote add origin https://github.com/bla-git.git <------ Définir le lien github comme 'origin', comme référence
@@ -21,6 +18,10 @@ DIVERS :
 *status <------ Montre le status de l'arbre de travails 
 *log <----- voir tout les changement de version, avec les dates/auteurs ( Q pour quitter)s
 *reset
+
+SSH :
+ssh-keygen
+github-->useHttps-->copier code -->.git--> coller
 
 composer install 
 php artisan key:generate
